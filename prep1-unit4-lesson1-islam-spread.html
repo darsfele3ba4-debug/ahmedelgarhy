@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس انتشار الإسلام في إفريقيا - الصف الأول الإعدادي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* شاشة القفل */
+        body.locked { overflow: hidden; }
+        body.locked #main-header, body.locked #home-screen, body.locked #main-footer, body.locked #game-screen { display: none !important; }
+        #lock-screen { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 16px;
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0e7490); overflow-y: auto; }
+        #lock-screen.hidden { display: none !important; }
+        .lock-card { background: #fff; width: 100%; max-width: 420px; border-radius: 26px; padding: 30px 24px 26px; text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,.45); border-top: 8px solid var(--warning); }
+        .lock-logo { width: 120px; height: 120px; border-radius: 24px; object-fit: cover; border: 4px solid var(--warning); box-shadow: 0 6px 14px rgba(0,0,0,.2); }
+        .lock-icon { width: 54px; height: 54px; margin: -30px auto 10px; position: relative; border-radius: 50%; background: var(--primary-light);
+            display: flex; align-items: center; justify-content: center; border: 4px solid #fff; }
+        .lock-card h2 { color: var(--primary); font-size: 1.35rem; font-weight: 900; line-height: 1.5; }
+        .lock-card .sub { color: #64748b; font-weight: 700; margin: 4px 0 18px; }
+        .lock-input { width: 100%; padding: 14px; border-radius: 14px; border: 2px solid #5eead4; font-size: 1.7rem; font-weight: 900;
+            text-align: center; letter-spacing: 8px; direction: ltr; color: var(--dark); font-family: 'Cairo', sans-serif; }
+        .lock-input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 4px rgba(13,148,136,.15); }
+        .lock-btn { width: 100%; margin-top: 14px; font-size: 1.2rem; padding: 14px; }
+        .lock-msg { min-height: 26px; margin-top: 10px; font-weight: 800; color: var(--danger); }
+        .lock-help { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: #128c3e; font-weight: 800; text-decoration: none; }
+    </style>
+</head>
+<body class="locked">
+    <div id="lock-screen">
+        <div class="lock-card">
+            <img src="logo.jpg" alt="الأستاذ أحمد الجارحي" class="lock-logo">
+            <div class="lock-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+            <h2>انتشار الإسلام في إفريقيا</h2>
+            <div class="sub">الصف الأول الإعدادي • الدراسات الاجتماعية</div>
+            <form id="lock-form" autocomplete="off">
+                <input id="lock-input" class="lock-input" type="text" inputmode="numeric" maxlength="12" placeholder="••••••" aria-label="كود الدرس">
+                <button type="submit" class="btn lock-btn" id="lock-btn">🔓 افتح الدرس</button>
+            </form>
+            <div class="lock-msg" id="lock-msg"></div>
+            <a class="lock-help" href="https://wa.me/201156780006" target="_blank" rel="noopener">ليس معك الكود؟ اطلبه من الأستاذ عبر واتساب</a>
+        </div>
+    </div>
+
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد الجارحي" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد الجَارِحِي</h1>
+                    <h2>الصَّفُّ الأَوَّلُ الإِعْدَادِيُّ - الْوَحْدَةُ الرَّابِعَةُ - الدَّرْسُ الأَوَّلُ: انْتِشَارُ الإِسْلَامِ فِي إِفْرِيقْيَا</h2>
+                    <p style="margin-top: 10px;">الدِّرَاسَاتُ الاجْتِمَاعِيَّةُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد الجَارِحِي - 01156780006</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201156780006" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "الدراسات الاجتماعية: انتشار الإسلام في إفريقيا - الصف الأول الإعدادي";
+    let allGamesData = [];
+    const ENC_DATA = {"s": "rwAOrcCt8AENFeutFFTeXA==", "i": "4oIKOhRz54icvy6q", "c": "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", "n": 150000};
+    const LOCK_KEY = "unlock_prep1-unit4-lesson1-islam-spread";
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد الجارحي</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201156780006?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+    // --- قفل الدرس بكود ---
+    function b64(s) { return Uint8Array.from(atob(s), c => c.charCodeAt(0)); }
+    function normCode(v) {
+        return (v || '').replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/\s+/g, '');
+    }
+    async function tryUnlock(code) {
+        try {
+            const enc = new TextEncoder();
+            const base = await crypto.subtle.importKey('raw', enc.encode(code), 'PBKDF2', false, ['deriveKey']);
+            const key = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(ENC_DATA.s), iterations: ENC_DATA.n, hash: 'SHA-256' },
+                base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+            const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(ENC_DATA.i) }, key, b64(ENC_DATA.c));
+            allGamesData = JSON.parse(new TextDecoder().decode(plain));
+            return true;
+        } catch (e) { return false; }
+    }
+    function openLesson() {
+        document.getElementById('lock-screen').classList.add('hidden');
+        document.body.classList.remove('locked');
+        initApp();
+    }
+    async function initLock() {
+        document.body.classList.add('locked');
+        const form = document.getElementById('lock-form'), input = document.getElementById('lock-input'),
+              msg = document.getElementById('lock-msg'), btn = document.getElementById('lock-btn');
+        if (!window.crypto || !crypto.subtle) { msg.textContent = 'افتح الرابط من متصفح حديث (Chrome أو Safari)'; return; }
+        let saved = null;
+        try { saved = localStorage.getItem(LOCK_KEY); } catch (e) {}
+        if (saved && await tryUnlock(saved)) { openLesson(); return; }
+        form.addEventListener('submit', async (ev) => {
+            ev.preventDefault();
+            const code = normCode(input.value);
+            if (!code) { msg.textContent = 'اكتب كود الدرس أولًا ✋'; return; }
+            btn.disabled = true; msg.style.color = 'var(--primary)'; msg.textContent = 'جارٍ التحقق...';
+            if (await tryUnlock(code)) {
+                try { localStorage.setItem(LOCK_KEY, code); } catch (e) {}
+                openLesson();
+            } else {
+                msg.style.color = 'var(--danger)'; msg.textContent = 'الكود غير صحيح، حاول مرة أخرى ❌';
+                input.classList.remove('shake'); void input.offsetWidth; input.classList.add('shake');
+                input.select(); btn.disabled = false;
+            }
+        });
+        input.focus();
+    }
+    window.onload = initLock;
+
+</script>
+</body>
+</html>
